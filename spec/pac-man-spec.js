@@ -6,15 +6,26 @@ describe('PacMan', function(){
     let pac = new PacMan();
 
     console.log(pac.whereMove())
-    pac.moveRight();
     // pac.moveRight();
     // pac.moveRight();
-    console.log(pac.whereAt());
+    // pac.moveRight();
+    // console.log(pac.makeMove('up'));
+    pac.makeMove('up')
+    console.log(pac.whereMove());
+    pac.makeMove('up')
+    console.log(pac.whereMove());
+    pac.makeMove('right')
+    pac.makeMove('right')
+    
     console.log(pac.whereMove());
 
 
 
-    expect(pac.test()).toEqual('it work!');
+
+
+
+
+    expect(true).toEqual(true);
 
 
   })
