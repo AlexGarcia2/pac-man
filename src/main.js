@@ -35,7 +35,7 @@ function ui_redrawHero(from, to) {
   destination.append(hero);
   orig.innerText ="•";
 
-  console.log('hi')
+  // console.log('hi')
 
   let food = pac.addObject();
   objset('🧠', 'food', food.currentPos);
@@ -45,11 +45,20 @@ function ui_redrawHero(from, to) {
 function objset(icon, attr, pos) {
   let heroImage = document.createElement('span');
   heroImage.setAttribute('id', attr);
+  heroImage.setAttribute('class', 'object')
   heroImage.innerText = icon;
 
   let startingPos = document.getElementById(pos);
   startingPos.innerText = "";
   startingPos.append(heroImage);
+}
+
+function freeSpots() {
+  let open = document.getElementsByClassName('object');
+  let open2 = open.filter
+
+  document.getElementsByClassName('object')[0].parentElement.id
+
 }
 
 //👾

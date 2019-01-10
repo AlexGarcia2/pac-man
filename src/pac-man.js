@@ -50,7 +50,18 @@ class PacMan {
   }
 
   addObject() {
-    let foodRespawn = this.playableMoves.filter(x => x!= this.currentPos)
+    console.log(this.playableMoves)
+
+    let isOccupied = [...document.getElementsByClassName('object')].map(x=> x.parentElement.id);
+    console.log(isOccupied)
+
+    // let isAvailable = isOccupied.map(x => {
+    //   return x.parentElement.toString()
+    // });
+
+
+    let foodRespawn = this.playableMoves.filter(x => x!= this.currentPos);
+
     return new Foods(foodRespawn[Math.floor((Math.random()*foodRespawn.length))]);
   }
 
