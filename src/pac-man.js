@@ -1,4 +1,6 @@
-// import { Ghosts } from './ghosts';
+import { Ghosts } from './ghosts';
+// import { Fruits } from './fruits';
+
 
 class PacMan {
   constructor() {
@@ -10,8 +12,6 @@ class PacMan {
   }
 
   whereMove() {
-
-
     let up = this.playableMoves.includes(this.currentPos - this.xOffset) ? true : false;
     let down = this.playableMoves.includes(this.currentPos + this.xOffset) ? true : false;
     let left = this.playableMoves.includes(this.currentPos - this.yOffset) ? true : false;
@@ -20,46 +20,36 @@ class PacMan {
     return { up, down, left, right }
   }
 
-  whereAt() {
-    return this.currentPos;
-  }
-
   makeMove(pos) {
-    
     switch(pos) {
       case 'up':
         if (this.whereMove().up === true) {
           this.currentPos-= this.xOffset;
         }
-
         break;
       case 'down':
         if (this.whereMove().down === true) {
           this.currentPos+= this.xOffset;
         }
-
         break;
       case 'left':
         if (this.whereMove().left === true) {
           this.currentPos-= this.yOffset;
         }
-
         break;
       case 'right':
         if (this.whereMove().right === true) {
           this.currentPos+= this.yOffset;
         }
-
         break;
-
     }
   }
 
-  moveRight() {
-    this.currentPos+=1
+  addObject() {
+
+    return new Ghosts(this.playableMoves,this.currentPos);
+
   }
-
-
 
 }
 
