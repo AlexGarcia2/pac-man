@@ -2,47 +2,22 @@ import { PacMan } from './pac-man';
 import { buildUI } from './ui-builder';
 import './styles.css';
 
-let pac = new PacMan();
+let pac = new PacMan(); //instantiate game
 
 document.addEventListener('readystatechange', event => {
   if ((event.target.readyState === 'interactive') || (event.target.readyState === 'ready')) {
-    buildUI();
-    objset('🚽', 'hero', pac.currentPos);
-
-    //add first enemy
-    let food = pac.addObject();
-
-    objset('💩', 'food', food.currentPos);
+    loadGame();
   }
 });
 
 document.addEventListener('keyup', (event) => {
-  let prior = pac.currentPos;
-
-  let isObstacle = [...document.getElementsByClassName('object food')].map(x=> parseInt(x.parentElement.id));
-
-  if (pac.makeMove(event.key)) {
-    let current = pac.currentPos;
-    ui_redrawHero(prior, current);
-    pac.movesMade++;
-    console.log(pac.movesMade);
-  }
-
-
-  if (isObstacle.includes(pac.currentPos)) {
-    pac.score++;
-    console.log(`Flush!\nscore: ${pac.score}`);
-  }
-
-
-
+  setInterval(() => {pac.timer++;}, 1000);
+  moveMade(event);
 });
 
-function ui_redrawHero(from, to) {
+function redraw(from, to) {
   let hero = document.getElementById('hero');
   let orig = document.getElementById(from);
-
-
   let destination = document.getElementById(to);
 
   destination.innerText = "";
@@ -50,15 +25,9 @@ function ui_redrawHero(from, to) {
   orig.innerText ="•";
 
   if (pac.movesMade % 2) {
-    // console.log('now')
     let food = pac.addObject();
     objset('💩', 'food', food.currentPos);
   }
-
-
-
-
-
 }
 
 function objset(icon, attr, pos) {
@@ -72,9 +41,31 @@ function objset(icon, attr, pos) {
   startingPos.append(heroImage);
 }
 
+function loadGame() {
+  buildUI();
+  objset('🚽', 'hero', pac.currentPos);
+  let food = pac.addObject();
+  objset('💩', 'food', food.currentPos);
+}
 
-//👾
-// 🧠
-// 🚶‍♂️
-//🔪
-//🧟
+function moveMade() {
+  let prior = pac.currentPos;
+  let isObstacle = [...document.getElementsByClassName('object food')].map(x=> parseInt(x.parentElement.id));
+
+  if (pac.makeMove(event.key)) {
+    let current = pac.currentPos;
+    redraw(prior, current);
+    pac.movesMade++;
+  }
+
+  if (isObstacle.includes(pac.currentPos)) {
+    updateScore();
+
+  }
+
+  function updateScore() {
+    pac.score++;
+    console.log(`Flush!\nscore: ${pac.score}`);
+  }
+
+}

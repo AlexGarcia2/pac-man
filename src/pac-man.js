@@ -13,6 +13,8 @@ class PacMan {
 
     this.score = 0;
     this.movesMade = 0;
+
+    this.timer = 0;
   }
 
   whereMove() {
