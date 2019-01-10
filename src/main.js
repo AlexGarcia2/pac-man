@@ -4,13 +4,14 @@ import './styles.css';
 
 
 let pac = new PacMan();
-
+let food = pac.addObject();
 
 document.addEventListener('readystatechange', event => {
   if ((event.target.readyState === 'interactive') || (event.target.readyState === 'ready')) {
     buildUI();
-    ui_setDefault();
 
+    objset('🧟', 'hero', pac.currentPos);
+    objset('🧠', 'food', food.currentPos);
 
   }
 });
@@ -34,14 +35,19 @@ function ui_redrawHero(from, to) {
   destination.append(hero);
   orig.innerText ="•";
 
+  console.log('hi')
+
+  let food = pac.addObject();
+  objset('🧠', 'food', food.currentPos);
+
 }
 
-function ui_setDefault() {
+function objset(icon, attr, pos) {
   let heroImage = document.createElement('span');
-  heroImage.setAttribute('id','hero');
-  heroImage.innerText = '🧟';
+  heroImage.setAttribute('id', attr);
+  heroImage.innerText = icon;
 
-  let startingPos = document.getElementById('15');
+  let startingPos = document.getElementById(pos);
   startingPos.innerText = "";
   startingPos.append(heroImage);
 }
@@ -49,3 +55,5 @@ function ui_setDefault() {
 //👾
 // 🧠
 // 🚶‍♂️
+//🔪
+//🧟

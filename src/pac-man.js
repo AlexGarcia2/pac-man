@@ -1,4 +1,4 @@
-import { Ghosts } from './ghosts';
+import { Foods } from './food';
 // import { Fruits } from './fruits';
 
 class PacMan {
@@ -50,7 +50,8 @@ class PacMan {
   }
 
   addObject() {
-    return new Ghosts(this.playableMoves,this.currentPos);
+    let foodRespawn = this.playableMoves.filter(x => x!= this.currentPos)
+    return new Foods(foodRespawn[Math.floor((Math.random()*foodRespawn.length))]);
   }
 
 }

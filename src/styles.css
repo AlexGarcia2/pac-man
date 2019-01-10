@@ -61,6 +61,6 @@ tr.row-1 td.col-1, tr.row-1 td.col-3, tr.row-3 td.col-1, tr.row-3 td.col-3 {
   color: black;
 }
 
-#hero {
+#hero, #food {
   font-size: 58px;
 }
