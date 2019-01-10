@@ -1,5 +1,10 @@
+body {
+  background: black;
+}
+
 table {
   border-spacing: 0px;
+  background: black;
 }
 
 td {
@@ -8,7 +13,7 @@ td {
   text-align: center;
   font-size: 24px;
   color: yellow;
-  background: black;  
+  background: black;
 }
 
 td.col-0 {
@@ -21,8 +26,8 @@ td.col-4 {
 
 td.col-5 {
   border: 0px!important;
-  background: white; 
-  color: white;
+  background: black;
+  color: black;
 }
 
 tr.row-4 td {
@@ -35,6 +40,7 @@ tr.row-0 td {
 
 tr.row-0 td:first-child {
   border-top-left-radius: 15px;
+
 }
 
 tr.row-0 td:nth-last-child(2) {
@@ -55,4 +61,6 @@ tr.row-1 td.col-1, tr.row-1 td.col-3, tr.row-3 td.col-1, tr.row-3 td.col-3 {
   color: black;
 }
 
-
+#hero {
+  font-size: 58px;
+}

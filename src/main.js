@@ -2,28 +2,50 @@ import { PacMan } from './pac-man';
 import { buildUI } from './ui-builder';
 import './styles.css';
 
+
 let pac = new PacMan();
 
 
 document.addEventListener('readystatechange', event => {
-  if (event.target.readyState === 'interactive') {
-    // console.log(pac.currentPos);
+  if ((event.target.readyState === 'interactive') || (event.target.readyState === 'ready')) {
     buildUI();
+    ui_setDefault();
+
+
   }
-
-  if (event.target.readyState === 'ready') {
-    // let click = docum
-  }
-
-
 });
 
 document.addEventListener('keyup', (event) => {
-  const valid = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']
+  let prior = pac.currentPos;
 
-  // if event.key.toString.includes(valid) {
-  //   console.log('good!')
-  // }
-  // event.key.filter
-  console.log(event.key)
+  if (pac.makeMove(event.key)) {
+    let current = pac.currentPos;
+    ui_redrawHero(prior, current);
+  }
+
 });
+
+function ui_redrawHero(from, to) {
+  let hero = document.getElementById('hero');
+  let orig = document.getElementById(from);
+  let destination = document.getElementById(to);
+
+  destination.innerText = "";
+  destination.append(hero);
+  orig.innerText ="•";
+
+}
+
+function ui_setDefault() {
+  let heroImage = document.createElement('span');
+  heroImage.setAttribute('id','hero');
+  heroImage.innerText = '🧟';
+
+  let startingPos = document.getElementById('15');
+  startingPos.innerText = "";
+  startingPos.append(heroImage);
+}
+
+//👾
+// 🧠
+// 🚶‍♂️

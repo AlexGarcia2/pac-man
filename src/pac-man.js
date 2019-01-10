@@ -20,27 +20,32 @@ class PacMan {
   }
 
   makeMove(pos) {
+    // console.log(pos)
     switch(pos) {
-    case 'up':
+    case 'ArrowUp':
       if (this.whereMove().up === true) {
         this.currentPos-= this.xOffset;
+        return true;
       }
-      break;
-    case 'down':
+      return false;
+    case 'ArrowDown':
       if (this.whereMove().down === true) {
         this.currentPos+= this.xOffset;
+        return true;
       }
-      break;
-    case 'left':
+      return false;
+    case 'ArrowLeft':
       if (this.whereMove().left === true) {
         this.currentPos-= this.yOffset;
+        return true;
       }
-      break;
-    case 'right':
+      return false;
+    case 'ArrowRight':
       if (this.whereMove().right === true) {
         this.currentPos+= this.yOffset;
+        return true;
       }
-      break;
+      return false;
     }
   }
 
