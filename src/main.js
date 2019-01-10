@@ -2,17 +2,16 @@ import { PacMan } from './pac-man';
 import { buildUI } from './ui-builder';
 import './styles.css';
 
-
 let pac = new PacMan();
-let food = pac.addObject();
 
 document.addEventListener('readystatechange', event => {
   if ((event.target.readyState === 'interactive') || (event.target.readyState === 'ready')) {
     buildUI();
-
     objset('🧟', 'hero', pac.currentPos);
-    objset('🧠', 'food', food.currentPos);
 
+    let food = pac.addObject();
+
+    objset('🧠', 'food', food.currentPos);
   }
 });
 
@@ -35,8 +34,6 @@ function ui_redrawHero(from, to) {
   destination.append(hero);
   orig.innerText ="•";
 
-  // console.log('hi')
-
   let food = pac.addObject();
   objset('🧠', 'food', food.currentPos);
 
@@ -45,7 +42,7 @@ function ui_redrawHero(from, to) {
 function objset(icon, attr, pos) {
   let heroImage = document.createElement('span');
   heroImage.setAttribute('id', attr);
-  heroImage.setAttribute('class', 'object')
+  heroImage.setAttribute('class', 'object');
   heroImage.innerText = icon;
 
   let startingPos = document.getElementById(pos);
@@ -53,13 +50,6 @@ function objset(icon, attr, pos) {
   startingPos.append(heroImage);
 }
 
-function freeSpots() {
-  let open = document.getElementsByClassName('object');
-  let open2 = open.filter
-
-  document.getElementsByClassName('object')[0].parentElement.id
-
-}
 
 //👾
 // 🧠

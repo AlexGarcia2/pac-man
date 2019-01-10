@@ -1,5 +1,4 @@
 import { Foods } from './food';
-// import { Fruits } from './fruits';
 
 class PacMan {
   constructor() {
@@ -20,7 +19,6 @@ class PacMan {
   }
 
   makeMove(pos) {
-    // console.log(pos)
     switch(pos) {
     case 'ArrowUp':
       if (this.whereMove().up === true) {
@@ -50,19 +48,21 @@ class PacMan {
   }
 
   addObject() {
-    console.log(this.playableMoves)
+    let isOccupied = [...document.getElementsByClassName('object')].map(x=> parseInt(x.parentElement.id));
+    let renderHere = this.whatsFree(isOccupied);
 
-    let isOccupied = [...document.getElementsByClassName('object')].map(x=> x.parentElement.id);
-    console.log(isOccupied)
+    return new Foods(renderHere[Math.floor((Math.random()*renderHere.length))]);
+  }
 
-    // let isAvailable = isOccupied.map(x => {
-    //   return x.parentElement.toString()
-    // });
-
-
-    let foodRespawn = this.playableMoves.filter(x => x!= this.currentPos);
-
-    return new Foods(foodRespawn[Math.floor((Math.random()*foodRespawn.length))]);
+  whatsFree(occupied) {
+    let clonedBoard = [this.currentPos];
+    for (let i=0; i<this.playableMoves.length; i++) {
+      clonedBoard.push(this.playableMoves[i]);
+    }
+    for (let i=0; i< occupied.length; i++) {
+      clonedBoard = clonedBoard.filter((x) => x != occupied[i]);
+    }
+    return clonedBoard;
   }
 
 }
