@@ -1,7 +1,6 @@
 import { Ghosts } from './ghosts';
 // import { Fruits } from './fruits';
 
-
 class PacMan {
   constructor() {
     this.playableMoves = [1,2,3,4,5,7,9,11,13,14,15,16,17,19,21,23,25,26,27,28,29];
@@ -17,38 +16,36 @@ class PacMan {
     let left = this.playableMoves.includes(this.currentPos - this.yOffset) ? true : false;
     let right = this.playableMoves.includes(this.currentPos + this.yOffset) ? true : false;
 
-    return { up, down, left, right }
+    return { up, down, left, right };
   }
 
   makeMove(pos) {
     switch(pos) {
-      case 'up':
-        if (this.whereMove().up === true) {
-          this.currentPos-= this.xOffset;
-        }
-        break;
-      case 'down':
-        if (this.whereMove().down === true) {
-          this.currentPos+= this.xOffset;
-        }
-        break;
-      case 'left':
-        if (this.whereMove().left === true) {
-          this.currentPos-= this.yOffset;
-        }
-        break;
-      case 'right':
-        if (this.whereMove().right === true) {
-          this.currentPos+= this.yOffset;
-        }
-        break;
+    case 'up':
+      if (this.whereMove().up === true) {
+        this.currentPos-= this.xOffset;
+      }
+      break;
+    case 'down':
+      if (this.whereMove().down === true) {
+        this.currentPos+= this.xOffset;
+      }
+      break;
+    case 'left':
+      if (this.whereMove().left === true) {
+        this.currentPos-= this.yOffset;
+      }
+      break;
+    case 'right':
+      if (this.whereMove().right === true) {
+        this.currentPos+= this.yOffset;
+      }
+      break;
     }
   }
 
   addObject() {
-
     return new Ghosts(this.playableMoves,this.currentPos);
-
   }
 
 }
