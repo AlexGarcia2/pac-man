@@ -54,14 +54,8 @@ class PacMan {
   }
 
   addObject() {
-    // let isObstace = [...document.getElementsByClassName('food')].map(x=> parseInt(x.parentElement.id));
-    // console.log(`obstacles at: ${isObstace}\ncurrent position: ${this.currentPos}`)
-    // document.getElementsByClassName('obstacle')
-
-
     let isOccupied = [...document.getElementsByClassName('object')].map(x=> parseInt(x.parentElement.id));
     let renderHere = this.whatsFree(isOccupied);
-    // console.log(renderHere)
 
     return new Foods(renderHere[Math.floor((Math.random()*renderHere.length))]);
   }

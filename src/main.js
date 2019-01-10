@@ -9,6 +9,7 @@ document.addEventListener('readystatechange', event => {
     buildUI();
     objset('🚽', 'hero', pac.currentPos);
 
+    //add first enemy
     let food = pac.addObject();
 
     objset('💩', 'food', food.currentPos);
@@ -23,8 +24,8 @@ document.addEventListener('keyup', (event) => {
   if (pac.makeMove(event.key)) {
     let current = pac.currentPos;
     ui_redrawHero(prior, current);
-    pac.movesMade++
-    console.log(pac.movesMade)
+    pac.movesMade++;
+    console.log(pac.movesMade);
   }
 
 
@@ -48,8 +49,13 @@ function ui_redrawHero(from, to) {
   destination.append(hero);
   orig.innerText ="•";
 
-  let food = pac.addObject();
-  objset('💩', 'food', food.currentPos);
+  if (pac.movesMade % 2) {
+    // console.log('now')
+    let food = pac.addObject();
+    objset('💩', 'food', food.currentPos);
+  }
+
+
 
 
 
