@@ -3,10 +3,7 @@ import { Foods } from './food';
 class PacMan {
   constructor() {
     this.playableMoves = [1,2,3,4,5,7,9,11,13,14,15,16,17,19,21,23,25,26,27,28,29];
-    this.currentPos = 15; //15 is middle of the board
-    // this.allObstacles = []
-
-    // if allObstacles.includs(this.ucrentpos) {score = score+=1}
+    this.currentPos = 15;
 
     this.xOffset = 6;
     this.yOffset = 1;
@@ -14,7 +11,7 @@ class PacMan {
     this.score = 0;
     this.movesMade = 0;
 
-    this.timer = 0;
+    this.timer = 60;
   }
 
   whereMove() {

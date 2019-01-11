@@ -7,22 +7,22 @@ let pac = new PacMan(); //instantiate game
 document.addEventListener('readystatechange', event => {
   if ((event.target.readyState === 'interactive') || (event.target.readyState === 'ready')) {
     loadGame();
+    setInterval(() => {
+      pac.timer--;
+      document.getElementById('timer').innerHTML = pac.timer;}, 1000);
   }
 });
 
 document.addEventListener('keyup', (event) => {
-  setInterval(() => {pac.timer++;}, 1000);
   moveMade(event);
 });
 
 function redraw(from, to) {
   let hero = document.getElementById('hero');
-  let orig = document.getElementById(from);
   let destination = document.getElementById(to);
 
   destination.innerText = "";
   destination.append(hero);
-  orig.innerText ="•";
 
   if (pac.movesMade % 2) {
     let food = pac.addObject();
@@ -56,16 +56,16 @@ function moveMade() {
     let current = pac.currentPos;
     redraw(prior, current);
     pac.movesMade++;
+    document.getElementById('moves').innerHTML = pac.movesMade;
   }
 
   if (isObstacle.includes(pac.currentPos)) {
     updateScore();
-
   }
 
   function updateScore() {
     pac.score++;
-    console.log(`Flush!\nscore: ${pac.score}`);
+    document.getElementById('score').innerHTML = pac.score;
   }
 
 }

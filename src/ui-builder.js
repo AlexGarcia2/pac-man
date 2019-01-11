@@ -9,7 +9,7 @@ export function buildUI() {
     htmlOutput = `${htmlOutput}<tr class="row-${row}">`;
 
     for (let cell = 0; cell < 6; cell++) {
-      htmlOutput = `${htmlOutput}<td class="col-${cell}" id=${++uid}>•</td>`;
+      htmlOutput = `${htmlOutput}<td class="col-${cell}" id=${++uid}></td>`;
     }
     htmlOutput = `${htmlOutput}</tr>`;
   }

@@ -1,10 +1,10 @@
 body {
-  background: black;
+  background: #cccccc;
 }
 
 table {
   border-spacing: 0px;
-  background: black;
+  background: #cccccc;
 }
 
 td {
@@ -12,30 +12,30 @@ td {
   height: 100px;
   text-align: center;
   font-size: 24px;
-  color: yellow;
-  background: black;
+  color: #cccccc;
+  background: #cccccc;
 }
 
 td.col-0 {
-  border-left: 20px blue double;
+  border-left: 20px #4c4c4c double;
 }
 
 td.col-4 {
-  border-right: 20px blue double;
+  border-right: 20px #4c4c4c double;
 }
 
 td.col-5 {
   border: 0px!important;
-  background: black;
-  color: black;
+  background: #cccccc;
+  color: #cccccc;
 }
 
 tr.row-4 td {
-  border-bottom: 20px blue double;
+  border-bottom: 20px #4c4c4c double;
 }
 
 tr.row-0 td {
-  border-top: 20px blue double;
+  border-top: 20px #4c4c4c double;
 }
 
 tr.row-0 td:first-child {
@@ -57,10 +57,21 @@ tr.row-4 td:nth-last-child(2) {
 
 tr.row-1 td.col-1, tr.row-1 td.col-3, tr.row-3 td.col-1, tr.row-3 td.col-3 {
   border-radius: 15px;
-  border: 20px blue double;
-  color: black;
+  border: 20px #4c4c4c double;
+  color: #cccccc;
 }
 
 #hero, #food {
   font-size: 58px;
+}
+
+.score {
+  padding: 15px 25px 25px;
+  margin-top: 25px;
+  width: 570px;
+  height: 150px;
+  border: 7px #4c4c4c solid;
+  border-radius: 15px;
+  font-size: 18px;
+  font-family: fantasy;
 }
